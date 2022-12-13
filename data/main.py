@@ -65,6 +65,8 @@ st.write("""
 # Dropdown para escolher a causa de morte de interesse
 cause = st.selectbox("Select the cause of death", dfCause["Cause"].unique())
 
+df = df.sort_values(by="Year")
+
 # Gráfico mapa mundi que mostra a evolução da doença escolhida
 fig2 = px.choropleth(df,
                 locations="Code",
@@ -96,6 +98,9 @@ dfSelected = df.loc[df["Country/Territory"] == country].drop(columns=["Country/T
 
 # Agora usamos melt para transformar as colunas em linhas
 dfSelected = dfSelected.melt(id_vars=["Year"], var_name="Cause", value_name="Deaths")
+
+# ordenar o dataset pelo ano
+dfSelected = dfSelected.sort_values(by="Year")
 
 # Gráfico de barras que mostra o número de mortes de cada doença para o país selecionado
 fig3 = px.bar(dfSelected,
