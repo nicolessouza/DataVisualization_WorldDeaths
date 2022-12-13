@@ -112,6 +112,9 @@ fig3 = px.bar(dfSelected,
 fig3.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig3.update_layout(geo=dict(bgcolor= 'rgba(0,0,0,0)'))
 
+# fixar escala do gráfico de acordo com o máximo de mortes do país
+fig3.update_layout(xaxis=dict(range=[0, dfSelected["Deaths"].max()]))
+
 #não exibir legenda das cores
 fig3.update_layout(showlegend=False)
 
