@@ -75,12 +75,12 @@ fig2 = px.choropleth(df,
                 width=840,
                 height=500,
                 template='plotly_white',
-                color_continuous_scale=px.colors.sequential.YlOrRd
+                color_continuous_scale=px.colors.sequential.YlOrRd,
+                range_color=[0, dfCause.loc[dfCause["Cause"] == cause]["Deaths"].max()]
 )
 fig2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig2.update_layout(geo=dict(bgcolor= 'rgba(0,0,0,0)'))
 
-# Segundo gráfico
 st.write(fig2)
 
 # Título do terceiro gráfico
